@@ -4,12 +4,13 @@ import TableRow from '../components/TableRow'
 
 export default () => {
     const [data, setData] = useState([])
+    const getData = async () => {
+        const res = await fetch('/api')
+        const newData = await res.json();
+        console.log(newData);
+        setData(newData)
+    }
     useEffect(() => {
-        async function getData() {
-            const res = await fetch('/api')
-            const newData = await res.json()
-            setData(newData)
-        }
         getData()
     }, [])
     return (
